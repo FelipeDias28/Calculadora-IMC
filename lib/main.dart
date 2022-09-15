@@ -14,6 +14,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController weighthControler = TextEditingController();
+  TextEditingController heightControler = TextEditingController();
+
+  String _infoText = "Informe seus dados!";
+
+  void _resetFields() {
+    weighthControler.clear();
+    heightControler.clear();
+    _infoText = "Informe seus dados!";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +34,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.green,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: _resetFields,
             icon: const Icon(Icons.refresh),
           ),
         ],
@@ -38,29 +49,31 @@ class _HomeState extends State<Home> {
               size: 120.0,
               color: Colors.green,
             ),
-            const TextField(
+            TextField(
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Peso (Kg)",
                 labelStyle: TextStyle(color: Colors.green),
               ),
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.green,
                 fontSize: 20.0,
               ),
+              controller: weighthControler,
             ),
-            const TextField(
+            TextField(
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Altura (cm)",
                 labelStyle: TextStyle(color: Colors.green),
               ),
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.green,
                 fontSize: 20.0,
               ),
+              controller: heightControler,
             ),
             Padding(
               padding: const EdgeInsets.only(
@@ -82,10 +95,10 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            const Text(
-              "Info",
+            Text(
+              _infoText,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.green,
                 fontSize: 25.0,
               ),
